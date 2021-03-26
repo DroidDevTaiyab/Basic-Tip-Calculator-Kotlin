@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="Basic Tip Calculator"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/icon_cost_of_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="@id/edt_bill"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/edt_bill" />
+
+        <EditText
+            android:id="@+id/edt_bill"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="Enter your bill amount"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+        <ImageView
+            android:id="@+id/icon_service_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="@id/tv_tipPercentage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_tipPercentage" />
+
+        <TextView
+            android:id="@+id/tv_tipPercentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="How was the service (Tip %)"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/edt_bill"
+            app:layout_constraintTop_toBottomOf="@id/edt_bill" />
+
+        <RadioGroup
+            android:id="@+id/tip_options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:checkedButton="@id/rbTip_twenty_percent"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="@id/tv_tipPercentage"
+            app:layout_constraintTop_toBottomOf="@id/tv_tipPercentage">
+
+            <RadioButton
+                android:id="@+id/rbTip_twenty_percent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Amazing (20%)" />
+
+            <RadioButton
+                android:id="@+id/rbTips_eighteen_percent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Good (15%)" />
+
+            <RadioButton
+                android:id="@+id/rbTip_fifteen_percent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ok (10%)" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_tipMinus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="+"
+            app:layout_constraintStart_toStartOf="@id/tip_options"
+            app:layout_constraintTop_toBottomOf="@id/tip_options" />
+
+        <Button
+            android:id="@+id/btn_tipPlus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="-"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tip_options" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0%"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_numberOfPeople"
+            app:layout_constraintEnd_toStartOf="@+id/btn_tipPlus"
+            app:layout_constraintStart_toEndOf="@+id/btn_tipMinus"
+            app:layout_constraintTop_toBottomOf="@+id/tip_options" />
+
+        <TextView
+            android:id="@+id/tv_numberOfPeople"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="Number of People"
+            android:textAllCaps="false"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_tipPlus" />
+
+        <Button
+            android:id="@+id/btn_peopleMinus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            app:layout_constraintStart_toStartOf="@id/tv_numberOfPeople"
+            app:layout_constraintTop_toBottomOf="@id/tv_numberOfPeople" />
+
+        <Button
+            android:id="@+id/btn_peoplePlus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_numberOfPeople" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/calculate_button"
+            app:layout_constraintEnd_toStartOf="@+id/btn_peoplePlus"
+            app:layout_constraintStart_toEndOf="@+id/btn_peopleMinus"
+            app:layout_constraintTop_toBottomOf="@+id/tv_numberOfPeople" />
+
+
+
+        <Button
+            android:id="@+id/calculate_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="calculate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/btn_peopleMinus"
+            app:layout_constraintTop_toBottomOf="@id/btn_peopleMinus" />
+
+        <TextView
+            android:id="@+id/tip_result"
+            android:layout_width="wrap_content"
+            android:text="Tip Ammount:- ₹0"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calculate_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
