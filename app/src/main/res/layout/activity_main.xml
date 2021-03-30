@@ -18,12 +18,13 @@
             android:layout_height="wrap_content"
             android:fontFamily="cursive"
             android:gravity="center"
-            android:textStyle="bold"
             android:text="Basic Tip Calculator"
             android:textSize="32sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/icon_cost_of_service"
             android:layout_width="wrap_content"
@@ -37,10 +38,10 @@
             android:id="@+id/edt_bill"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:fontFamily="sans-serif-light"
             android:hint="Enter your bill amount"
             android:inputType="numberDecimal"
-            android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
@@ -82,109 +83,108 @@
                 android:text="Amazing (20%)" />
 
             <RadioButton
-                android:id="@+id/rbTips_eighteen_percent"
+                android:id="@+id/rbTip_fifteen_percent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Good (15%)" />
 
             <RadioButton
-                android:id="@+id/rbTip_fifteen_percent"
+                android:id="@+id/rbTip_tan_percent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ok (10%)" />
 
         </RadioGroup>
 
-        <Button
-            android:id="@+id/btn_tipMinus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="+"
-            app:layout_constraintStart_toStartOf="@id/tip_options"
-            app:layout_constraintTop_toBottomOf="@id/tip_options" />
-
-        <Button
-            android:id="@+id/btn_tipPlus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="-"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tip_options" />
-
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0%"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tv_numberOfPeople"
-            app:layout_constraintEnd_toStartOf="@+id/btn_tipPlus"
-            app:layout_constraintStart_toEndOf="@+id/btn_tipMinus"
-            app:layout_constraintTop_toBottomOf="@+id/tip_options" />
-
-        <TextView
-            android:id="@+id/tv_numberOfPeople"
+            android:id="@+id/tv_numberOfPerson"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
+            android:text="Number of Person"
+            android:textAllCaps="false"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:text="Number of People"
-            android:textAllCaps="false"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_tipPlus" />
+            app:layout_constraintTop_toBottomOf="@+id/tip_options" />
 
         <Button
-            android:id="@+id/btn_peopleMinus"
+            android:id="@+id/btn_person_plus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+"
-            app:layout_constraintStart_toStartOf="@id/tv_numberOfPeople"
-            app:layout_constraintTop_toBottomOf="@id/tv_numberOfPeople" />
+            app:layout_constraintStart_toStartOf="@id/tv_numberOfPerson"
+            app:layout_constraintTop_toBottomOf="@id/tv_numberOfPerson" />
 
         <Button
-            android:id="@+id/btn_peoplePlus"
+            android:id="@+id/btn_person_minus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_numberOfPeople" />
+            app:layout_constraintTop_toBottomOf="@id/tv_numberOfPerson" />
+
 
         <TextView
+            android:id="@+id/tv_number_of_person_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/calculate_button"
-            app:layout_constraintEnd_toStartOf="@+id/btn_peoplePlus"
-            app:layout_constraintStart_toEndOf="@+id/btn_peopleMinus"
-            app:layout_constraintTop_toBottomOf="@+id/tv_numberOfPeople" />
-
-
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_person_minus"
+            app:layout_constraintEnd_toStartOf="@+id/btn_person_minus"
+            app:layout_constraintStart_toEndOf="@+id/btn_person_plus"
+            app:layout_constraintTop_toBottomOf="@+id/tv_numberOfPerson" />
 
         <Button
-            android:id="@+id/calculate_button"
+            android:id="@+id/btn_calculate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="calculate"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/btn_peopleMinus"
-            app:layout_constraintTop_toBottomOf="@id/btn_peopleMinus" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_person_minus" />
 
         <TextView
-            android:id="@+id/tip_result"
+            android:id="@+id/tv_totalTip"
             android:layout_width="wrap_content"
-            android:text="Tip Ammount:- ₹0"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/calculate_button" />
+            app:layout_constraintTop_toBottomOf="@id/btn_calculate" />
+
+        <TextView
+            android:id="@+id/tv_tipPerPerson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_totalTip" />
+
+
+        <TextView
+            android:id="@+id/tv_total_BillPlusTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_tipPerPerson" />
+
+
+        <TextView
+            android:id="@+id/tv_totalPerPerson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_total_BillPlusTip" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
