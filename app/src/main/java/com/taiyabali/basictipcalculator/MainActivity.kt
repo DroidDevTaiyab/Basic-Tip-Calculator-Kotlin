@@ -7,6 +7,12 @@ import com.taiyabali.basictipcalculator.databinding.ActivityMainBinding
 import java.text.NumberFormat
 import java.util.*
 
+/**
+ * Created by Techpass Master on 24-March-21.
+ * Website - https://techpassmaster.com/
+ * Email id - hello@techpassmaster.com
+ */
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
