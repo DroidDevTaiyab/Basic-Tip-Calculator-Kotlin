@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     private fun onClick() {
 
         with(binding) {
-            btnCalculate.setOnClickListener {
+            btnCalculateTip.setOnClickListener {
                 calculateTip()
             }
 
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            iconCopy.setOnClickListener {
+            imgCopyTip.setOnClickListener {
                 val tipFormatted = "${tvTotalTip.text}\n" +
                         "${tvTotalBillPlusTip.text}\n" +
                         "${tvTipPerPerson.text}\n" +
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                 copyTipResult(tipFormatted)
             }
 
-            iconShare.setOnClickListener {
+            imgShareTip.setOnClickListener {
                 val tipFormatted = "${tvTotalTip.text}\n" +
                         "${tvTotalBillPlusTip.text}\n" +
                         "${tvTipPerPerson.text}\n" +
@@ -77,13 +77,13 @@ class MainActivity : AppCompatActivity() {
         val cost = totalBill.toDoubleOrNull()
 
         if (totalBill.isNotEmpty()) {
-            binding.iconCopy.visibility = View.VISIBLE
-            binding.iconShare.visibility = View.VISIBLE
+            binding.imgCopyTip.visibility = View.VISIBLE
+            binding.imgShareTip.visibility = View.VISIBLE
 
             //      get selected tip percentage
-            val tipPercentage = when (binding.tipOptions.checkedRadioButtonId) {
-                R.id.rbTip_twentyPercent -> 0.20
-                R.id.rbTip_fifteenPercent -> 0.15
+            val tipPercentage = when (binding.rgTipOptions.checkedRadioButtonId) {
+                R.id.rbTipTwentyPercent -> 0.20
+                R.id.rbTipFifteenPercent -> 0.15
                 else -> 0.10
             }
 
