@@ -30,9 +30,8 @@ class MainActivity : AppCompatActivity() {
     private fun onClick() {
 
         with(binding) {
-
             btnCalculate.setOnClickListener {
-                calculateTip()      // fun for calculate tip
+                calculateTip()
             }
 
             btnPersonPlus.setOnClickListener {
@@ -51,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun calculateTip() {
             //      get bill cost from EditText.
-            //      keep total bill amount in the cost.
+            //      set total bill amount in the cost.
         val totalBill: String = binding.edtBill.text.toString()
         val cost = totalBill.toDoubleOrNull()
 
@@ -59,30 +58,26 @@ class MainActivity : AppCompatActivity() {
             binding.iconCopy.visibility = View.VISIBLE
             binding.iconShare.visibility = View.VISIBLE
 
-            //      check tip percentage based on which radio button selected
+            //      get selected tip percentage
             val tipPercentage = when (binding.tipOptions.checkedRadioButtonId) {
                 R.id.rbTip_twentyPercent -> 0.20
                 R.id.rbTip_fifteenPercent -> 0.15
                 else -> 0.10
             }
 
-            //      Calculate the tip according to percentage
-            //      and display per person tip result
+            //      Calculate the tip according to percentage and set per person tip
             val tip = tipPercentage * cost!!
             showTotalTipResult(tip)
 
-            //      Calculate the per person tip
-            //      and display per person tip result
+            //      Calculate & set the per person tip
             val perPersonTip = (tip / countPerson).toString()
             showPerPersonTipResult(perPersonTip.toDouble())
 
-            //      Calculate the total bill + tip
-            //      and display total bill + tip result
+            //      Calculate & set total bill + tip
             val billPlusTip = cost.plus(tip)
             showTotalBillPlusTipResult(billPlusTip)
 
-            //      Calculate total per person
-            //      and display per person total
+            //      Calculate & set per person total
             val totalPerPerson = (billPlusTip / countPerson).toString()
             showTotalPerPersonResult(totalPerPerson.toDouble())
         } else {
@@ -95,6 +90,11 @@ class MainActivity : AppCompatActivity() {
         binding.tvTotalTip.text = ("Total Tip: $numberFormat")
     }
 
+    private fun showTotalBillPlusTipResult(tip: Double) {
+        val numberFormat = NumberFormat.getCurrencyInstance(Locale("en", "in")).format(tip)
+        binding.tvTotalBillPlusTip.text = ("Total Amount (Bill+Tip): $numberFormat")
+    }
+
     private fun showPerPersonTipResult(tip: Double) {
         val numberFormat = NumberFormat.getCurrencyInstance(Locale("en", "in")).format(tip)
         binding.tvTipPerPerson.text = ("Per Person Tip: $numberFormat")
@@ -104,11 +104,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             binding.tvTipPerPerson.text = ("Per Person Tip: $numberFormat")
         }
-    }
-
-    private fun showTotalBillPlusTipResult(tip: Double) {
-        val numberFormat = NumberFormat.getCurrencyInstance(Locale("en", "in")).format(tip)
-        binding.tvTotalBillPlusTip.text = ("Total Amount (Bill+Tip): $numberFormat")
     }
 
     private fun showTotalPerPersonResult(tip: Double) {
