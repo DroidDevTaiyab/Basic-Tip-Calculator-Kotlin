@@ -1,5 +1,8 @@
 package com.taiyabali.basictipcalculator
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -24,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.edtBill.requestFocus()
         onClick()
     }
 
@@ -44,6 +48,24 @@ class MainActivity : AppCompatActivity() {
                     countPerson--
                     tvPersonCount.text = countPerson.toString()
                 }
+            }
+
+            iconCopy.setOnClickListener {
+                val tipFormatted = "${tvTotalTip.text}\n" +
+                        "${tvTotalBillPlusTip.text}\n" +
+                        "${tvTipPerPerson.text}\n" +
+                        "${tvTotalPerPerson.text}"
+
+                copyTipResult(tipFormatted)
+            }
+
+            iconShare.setOnClickListener {
+                val tipFormatted = "${tvTotalTip.text}\n" +
+                        "${tvTotalBillPlusTip.text}\n" +
+                        "${tvTipPerPerson.text}\n" +
+                        "${tvTotalPerPerson.text}"
+
+                shareTipResult(tipFormatted)
             }
         }
     }
@@ -113,5 +135,22 @@ class MainActivity : AppCompatActivity() {
         } else {
             binding.tvTotalPerPerson.text = ("Total Per Person: $numberFormat")
         }
+    }
+
+    private fun copyTipResult(copyTipResultText : String){
+        val clipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        val clipData = ClipData.newPlainText("text", copyTipResultText)
+        clipboardManager.setPrimaryClip(clipData)
+        Toast.makeText(this, "Tip copied", Toast.LENGTH_LONG).show()
+    }
+
+    private fun shareTipResult(shareTipResultText :String){
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT,shareTipResultText )
+            type = "text/plain"
+        }
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
     }
 }
