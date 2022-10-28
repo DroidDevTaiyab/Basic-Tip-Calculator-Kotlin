@@ -28,10 +28,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.edtBill.requestFocus()
-        onClick()
+        onViewClick()
     }
 
-    private fun onClick() {
+    private fun onViewClick() {
 
         with(binding) {
             btnCalculateTip.setOnClickListener {
